@@ -1,5 +1,5 @@
 import pygame
-import sys
+#import sys
 
 
 # print(f"""
@@ -39,7 +39,7 @@ while on:
     m_x,m_y = pygame.mouse.get_pos()
 
     if onScreen and m_x in range(0,601) and m_y in range(0,401):
-        pygame.draw.circle(screen, BOX_COLOR, (m_x, m_y), box_len/2)
+        pygame.draw.circle(screen, BOX_COLOR, (m_x, m_y), box_len/2, 3)
         #pygame.draw.rect(screen, BOX_COLOR, (m_x-box_len/2,m_y-box_wid/2,box_len,box_wid))
 
     screen.blit(text_surface, text)
@@ -50,4 +50,4 @@ while on:
 
     
 pygame.quit()
-sys.exit(0)
+#sys.exit(0)
