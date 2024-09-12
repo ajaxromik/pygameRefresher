@@ -36,6 +36,13 @@ class textInput(pygame.sprite.Sprite):
 	def clear(self):
 		self.text = ""
 
+	def negate(self): # puts a negative sign at the front if there's one there already
+		if(self.text[:1] == "-"):
+			self.text = self.text[1:]
+		elif(len(self.text) > 0):
+			self.text = "-" + self.text
+
+
 a = textInput()
 print(a)
 
@@ -55,10 +62,7 @@ while on:
 					a.backspace()
 					print("\nerased")
 				elif e.unicode == " ":
-					if(a.text[:1] == "-"):
-						a.text = a.text[1:]
-					elif(len(a.text) > 0):
-						a.text = "-" + a.text
+					a.negate()
 				elif e.key == pygame.K_RETURN or e.key == pygame.K_KP_ENTER:
 					print(f'number: {a.text}')
 					a.clear()
