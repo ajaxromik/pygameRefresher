@@ -11,7 +11,7 @@ class TextInput(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self) # for some reason sprites cant be initialized with just the super().__init__()
 		self.text = ""
 		self.font = pygame.font.SysFont('Arial', 34)
-		self.image = self.font.render("Type numbers, press space for negative", True, self.DEFAULT_COLOR)
+		self.image = self.font.render(placeholder, True, self.DEFAULT_COLOR)
 		self.rect = self.image.get_rect()
 		self.modified = False
 
