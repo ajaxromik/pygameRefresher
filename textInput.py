@@ -1,9 +1,9 @@
 import pygame
-pygame.init()
+# pygame.init()
 # pygame.font.init()
-GREY = (200,200,200)
+# GREY = (200,200,200)
 
-class textInput(pygame.sprite.Sprite):
+class TextInput(pygame.sprite.Sprite):
 	allowedChars = " 1234567890" # for now just numbers and space
 	DEFAULT_COLOR = WHITE = (0,0,0)
 	
@@ -45,7 +45,10 @@ class textInput(pygame.sprite.Sprite):
 		elif(len(self.text) > 0):
 			self.text = "-" + self.text
 
+	def isEmpty(self):
+		return not self.text
 
+"""
 a = textInput()
 print(a)
 
@@ -66,8 +69,9 @@ while on:
 				elif e.unicode == " ":
 					a.negate()
 				elif e.key == pygame.K_RETURN or e.key == pygame.K_KP_ENTER:
-					print(f'number: {a.text}')
-					a.clear()
+					if not a.isEmpty():
+						print(f'number: {a.text}')
+						a.clear()
 				else:
 					# print(f"\nkey: {e.unicode}")
 					a.charAdd(e.unicode)
@@ -78,3 +82,4 @@ while on:
 
 
 pygame.quit()
+"""
