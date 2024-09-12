@@ -33,6 +33,9 @@ class textInput(pygame.sprite.Sprite):
 		if(len(self.text) != 0):
 			self.text = self.text[:-1]
 
+	def clear(self):
+		self.text = ""
+
 a = textInput()
 print(a)
 
@@ -58,7 +61,7 @@ while on:
 						a.text = "-" + a.text
 				elif e.key == pygame.K_RETURN or e.key == pygame.K_KP_ENTER:
 					print(f'number: {a.text}')
-					a.text = ""
+					a.clear()
 				else:
 					# print(f"\nkey: {e.unicode}")
 					a.charAdd(e.unicode)
