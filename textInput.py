@@ -7,25 +7,28 @@ class textInput(pygame.sprite.Sprite):
 	allowedChars = " 1234567890" # for now just numbers and space
 	DEFAULT_COLOR = WHITE = (0,0,0)
 	
-	def __init__(self, color = DEFAULT_COLOR):
+	def __init__(self, color = DEFAULT_COLOR, placeholder = "Enter text here"):
 		pygame.sprite.Sprite.__init__(self) # for some reason sprites cant be initialized with just the super().__init__()
 		self.text = ""
 		self.font = pygame.font.SysFont('Arial', 34)
 		self.image = self.font.render("Type numbers, press space for negative", True, self.DEFAULT_COLOR)
 		self.rect = self.image.get_rect()
+		self.modified = False
 
 	def output(self):
 		print(f"\ncurrent output: {self.text}")
 
 	def update(self):
-		center = self.rect.center
-		self.image = self.font.render(self.text, True, self.DEFAULT_COLOR)
-		self.rect = self.image.get_rect()
-		self.rect.center = center
+		if self.modified:
+			center = self.rect.center
+			self.image = self.font.render(self.text, True, self.DEFAULT_COLOR)
+			self.rect = self.image.get_rect()
+			self.rect.center = center
 
 	def charAdd(self, char): # placeholder text disappears after first call
-		self.output()
+		# self.output()
 		if char in self.allowedChars:
+			self.modified = True
 			self.text += char
 			self.update()
 
@@ -60,7 +63,6 @@ while on:
 			case pygame.KEYDOWN:
 				if e.key == pygame.K_BACKSPACE:
 					a.backspace()
-					print("\nerased")
 				elif e.unicode == " ":
 					a.negate()
 				elif e.key == pygame.K_RETURN or e.key == pygame.K_KP_ENTER:
