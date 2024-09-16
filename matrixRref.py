@@ -21,6 +21,7 @@ screen = pygame.display.set_mode(screen_res)
 BACKGROUND = (0,63,191)
 
 inputBox = ti.TextInput()
+inputBox.rect.center = tuple(x // 2 for x in screen_res)
 
 on = True
 while on:
