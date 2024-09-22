@@ -1,34 +1,85 @@
 
 def pQuestion(list, text: str):
-	print(text)
 	retry = True
 	while retry:
-		match input().upper():
-			case '1' | 'A':
-				return list[0]
-			case '2' | 'B':
-				return list[1]
-			case '3' | 'C':
-				return list[2]
-			case '4' | 'D':
-				return list[3]
+		print(text)
+		try:
+			match input().upper():
+				# case '1' | 'A' <-- how to do cases with multiple triggers
+				case 'A':
+					return list[0]
+				case 'B':
+					return list[1]
+				case 'C':
+					return list[2]
+				case 'D':
+					return list[3]
+				case _:
+					print("Invalid input, try again")
+		except Exception as e:
+			print("Invalid input, try again")
 
-hiddenVal = 0
 
-hiddenVal += pQuestion([15,0, -20, 100],
-	"""Pick a letter:
-	A. Apples
-	B. Bananas
-	C. Corn
-	D. Dollar bills"""
+print(
+	"""
+--------------------------------------------------------------------
+| Welcome to my personality test! I'll tell you what organic thing |
+|                you're most closely aligned with!                 | 
+--------------------------------------------------------------------
+
+"""
 )
 
-if hiddenVal < 0:
+aura = 0
+
+aura += pQuestion([4, 2, -4, 15],
+	"""
+
+Pick a food:
+ A. Apples
+ B. Bananas
+ C. Corn
+ D. Steak"""
+)
+
+aura += pQuestion([-3, -10, 3, 6],
+	"""
+
+What did the last person you encounter do:
+ A. Wave
+ B. Scream
+ C. Do their own thing
+ D. Talk to you"""
+)
+
+aura += pQuestion([0, 4, 6, -5],
+	"""
+
+What's your favorite game in this list?
+ A. Minecraft
+ B. Pokemon
+ C. Apex Legends
+ D. Undertale"""
+)
+
+aura += pQuestion([5, 1, -6, 8],
+	"""
+
+You suddenly have a bit of free time, what will you do?
+ A. Work, errands, or chores
+ B. Play a game
+ C. Cook
+ D. Some form of exercise
+
+ """
+)
+
+if aura < 0:
 	print('You are a shark. Have fun in the ocean!')
-elif hiddenVal == 0:
-	print('You are a zombie..')
-elif hiddenVal > 50:
-	print('''You are a billionaire! Now what?''')
+elif aura == 0:
+	print('You are a zombie.. uh oh..')
 else:
-	print('''You are a tree.
-		The winds grace you with their presence.''')
+	if aura % 2 == 0:
+		print("You're a lemon! I guess life gave you!")
+	else:
+		print('You are a tree. The winds grace you with their presence.')
